@@ -24,12 +24,4 @@ titanic <- titanic_train %>%
          Sex = factor(Sex))
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-![](Titanic_MD_files/figure-gfm/pressure-1.png)<!-- -->
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
 
