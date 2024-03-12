@@ -3,7 +3,7 @@ Titanic Visualization
 
 <img src="images/C_f_C.JPG" width="1000" >
 
-Photo Credit: exhibit at Museo del Mar, 360 C. de San Francisco, San Juan, 00901, Puerto Rico
+[Photo Credit: exhibit at Museo del Mar, 360 C. de San Francisco, San Juan, 00901, Puerto Rico]
 
 
 ## Introduction
