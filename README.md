@@ -1,6 +1,9 @@
 Titanic Visualization
 ================
 
+<img src="images/C_f_C.jpg" width="1000" >
+
+
 ## Introduction
 
 Welcome to this exciting exercise where we delve into the visualization of the Titanic dataset using R. Data visualization is a powerful tool that allows us to uncover insights and patterns within data through graphical representations such as charts, graphs, and maps. In this notebook, we will be utilizing the Seaborn Library to create visually appealing and informative plots.
