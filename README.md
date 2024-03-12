@@ -1,7 +1,7 @@
 Titanic Visualization
 ================
 
-<img src="images/C_f_C.jpg" width="1000" >
+<img src="images/C_f_C.JPG" width="1000" >
 
 
 ## Introduction
