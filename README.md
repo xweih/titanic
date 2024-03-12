@@ -26,4 +26,6 @@ titanic <- titanic_train %>%
          Sex = factor(Sex))
 ```
 
+## [To See The Rest](https://xweih.github.io/titanic/)
+
 
