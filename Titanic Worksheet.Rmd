@@ -1,0 +1,110 @@
+---
+title: "Titanic Visualization"
+author: "Xiaowei Hu"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(digits = 3)    # report 3 significant digits
+library(tidyverse)
+library(titanic)
+```
+
+## Introduction
+
+Welcome to this exciting exercise where we delve into the visualization of the Titanic dataset using R. Data visualization is a powerful tool that allows us to uncover insights and patterns within data through graphical representations such as charts, graphs, and maps. In this notebook, we will be utilizing the Seaborn Library to create visually appealing and informative plots.
+
+The Titanic dataset serves as a captivating backdrop for our exploration, not only for its rich features but also for the poignant narrative it carries. The tragic sinking of the Titanic on its maiden voyage is a story that resonates with many, intertwined with tales of love, loss, and survival. It presents a unique opportunity to analyze how factors such as socio-economic status, family size, and other variables influenced the chances of survival during this historic event.
+
+As we embark on this journey of data visualization, we will unravel intriguing insights such as the dynamics between wealth and survival, the impact of family size on survival rates, and other compelling patterns that emerge from the dataset. Join me as we navigate through this script and uncover the hidden stories within the Titanic dataset. Let's begin our exploration!
+
+```{r cars}
+titanic <- titanic_train %>%
+  select(Survived, Pclass, Sex, Age, SibSp, Parch, Fare) %>%
+  mutate(Survived = factor(Survived),
+         Pclass = factor(Pclass),
+         Sex = factor(Sex))
+```
+
+
+## QQ-plot of Passenger Age Distribution
+
+You can also embed plots, for example:
+
+```{r pressure, echo=TRUE}
+params <- titanic %>%
+  filter(!is.na(Age)) %>%
+  summarize(mean = mean(Age), sd = sd(Age))
+
+titanic |> filter(!is.na(Age)) |>
+  ggplot(aes(sample = Age)) +
+  geom_qq(dparams = params) +
+  geom_qq_line(dparams = params)
+```
+
+
+## The Survival by Sex
+
+```{r, echo=TRUE}
+titanic |> filter(Survived == 1) |>
+  ggplot(aes(Survived, fill = Sex)) + geom_bar()
+
+titanic |> group_by(Sex) |>
+  ggplot(aes(Survived, fill = Sex)) + geom_bar()
+```
+
+## Which age group is the only group more likely to survive than die?
+
+### Which age group had the most deaths?
+
+```{r, echo=TRUE}
+titanic |> filter(!is.na(Age) & !is.na(Survived)) |> 
+  ggplot(aes(x=Age, y=after_stat(count), fill= Survived)) + 
+  geom_density(alpha = 0.2) +
+  labs(y="Count")
+```
+
+### Which age group had the highest proportion of deaths?
+
+```{r, echo=TRUE}
+titanic |> filter(!is.na(Age) & !is.na(Survived)) |> 
+  ggplot(aes(x=Age, y=after_stat(count / sum(n[!duplicated(group)])), color= Survived)) + 
+  geom_density(alpha = 0.2)
+```
+## Survival by Fare
+
+```{r, echo=TRUE}
+titanic %>% filter(Fare != 0) %>%
+  ggplot(aes(Fare, Survived)) +
+  geom_boxplot() +
+  geom_jitter() + 
+  scale_x_continuous(trans = "log2")
+```
+
+## Survival by Passenger Class
+
+```{r, echo=TRUE}
+titanic %>% ggplot(aes(x=Pclass, y=after_stat(count), fill= Survived)) + 
+  geom_bar()
+
+titanic %>% ggplot(aes(x=Pclass, y=after_stat(count), fill= Survived)) +
+  geom_bar(position = "fill") +
+  labs(y="Proportion")
+
+titanic %>% ggplot(aes(x=Survived, y=after_stat(count), fill= Pclass)) +
+  geom_bar(position = "fill") +
+  labs(y="Proportion")
+```
+
+## Survival by Age, Sex and Passenger Class
+
+### Create a grid of density plots for age, filled by survival status, with count on the y-axis, faceted by sex and passenger class.
+
+```{r, echo=TRUE}
+titanic %>% 
+  ggplot(aes(x=Age, y=after_stat(count), fill=Survived)) +
+  geom_density() +
+  facet_grid(Sex ~ Pclass)
+```
