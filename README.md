@@ -5,7 +5,7 @@ Titanic Visualization
 
 [Photo Credit: exhibit at Museo del Mar, 360 C. de San Francisco, San Juan, 00901, Puerto Rico]
  
-
+ 
 ## Introduction
 
 Welcome to this exciting exercise where we delve into the visualization of the Titanic dataset using R. Data visualization is a powerful tool that allows us to uncover insights and patterns within data through graphical representations such as charts, graphs, and maps. In this notebook, we will be utilizing the Seaborn Library to create visually appealing and informative plots. 
