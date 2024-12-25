@@ -15,7 +15,7 @@ The Titanic dataset serves as a captivating backdrop for our exploration, not on
 As we embark on this journey of data visualization, we will unravel intriguing insights such as the dynamics between wealth and survival, the impact of family size on survival rates, and other compelling patterns that emerge from the dataset. Join me as we navigate through this script and uncover the hidden stories within the Titanic dataset. Let's begin our exploration!
  
 ## Notebook
-
+ 
 You can include R code in the document as follows:
 
 ``` r
